@@ -61,20 +61,8 @@ async function getPossibleWords(matrix){
     someList.forEach(async word => {
         let response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
         let res = response.json()
-        
         console.log(res)
     });
-
-    // finalList.forEach(async word => {
-    //     if(c > 10){
-    //         return
-    //     }
-    //     let response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
-    //     let res = response.json()
-    //     console.log(res)
-    //     c++
-    // });
-    // console.log(finalList)
 
 }
 
@@ -85,7 +73,6 @@ function dfs(length, ii, jj, path, visited, currentNode, matrix, listOfStrings){
     const directions = [
         [-1, 0], [0, -1], [1, 0], [0, 1]
     ];
-    // console.log(visited)
     listOfStrings.push(path);
     
     for(let i = ii; i < MATRIX_ROWS; i++){
@@ -96,7 +83,6 @@ function dfs(length, ii, jj, path, visited, currentNode, matrix, listOfStrings){
                 if(rw >= 0 && rw < MATRIX_ROWS && cl >= 0 && cl < MATRIX_COLS){
                     if (visited.has(`${i+dx},${j+dy}`)) return;
                     visited.add(`${i+dx},${j+dy}`);
-                    // console.log(i+dx, j+dy)
                     let wrd = path.concat(matrix[i+dx][j+dy]);
                     dfs(length, i + dx, j + dy, wrd, new Set(visited), currentNode, matrix, listOfStrings);
                 }
