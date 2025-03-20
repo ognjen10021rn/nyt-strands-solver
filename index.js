@@ -50,19 +50,18 @@ async function getPossibleWords(matrix){
         }
         count++;
     }
+    
+
+    //TODO: find a way to chech if it's a valid word
+
     finalList = listOfStrings.filter(wrd => wrd.length >= 4)
-    let c = 0
-    let someList = []
-    for(let i = 0; i < 10; i++){
-        someList.push(finalList[i])
-        c++;
-    }
-    console.log(someList)
-    someList.forEach(async word => {
-        let response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
-        let res = response.json()
-        console.log(res)
-    });
+    let setList = [...new Set(finalList)]
+    // someList.forEach(async word => {
+    //     let response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+    //     let res = response.json()
+    //     console.log(res.body)
+    // });
+    console.log(setList)
 
 }
 
